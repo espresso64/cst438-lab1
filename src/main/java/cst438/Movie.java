@@ -2,6 +2,7 @@ package cst438;
 //Domain object
 
 import javax.persistence.Entity;
+import java.sql.Timestamp;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
@@ -31,7 +32,8 @@ public class Movie {
 	@Max(value = 5)
 	private int movieRating;
 
-	private String date;
+	@Basic
+	private Timestamp date;
 
 	//No-arg constructor
 	public Movie() {
@@ -39,7 +41,7 @@ public class Movie {
 	}
 
 	//Constructor
-	public Movie(long id, String userName, String movieTitle, int movieRating, String date) {
+	public Movie(long id, String userName, String movieTitle, int movieRating, Timestamp date) {
 		super();
 		this.id = id;
 		this.userName = userName;
@@ -81,11 +83,11 @@ public class Movie {
 		this.movieRating = movieRating;
 	}
 
-	public String getDate() {
+	public Timestamp getDate() {
 		return date;
 	}
 
-	public void setDate(String date) {
+	public void setDate(Timestamp date) {
 		this.date = date;
 	}
 

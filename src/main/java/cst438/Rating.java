@@ -2,7 +2,7 @@ package cst438;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.sql.Timestamp;
 
 import javax.validation.Valid;
 
@@ -33,14 +33,8 @@ public class Rating {
 		if (result.hasErrors()) {
 			return "movie_form";
 		}
-		DateFormat dateFormating = new SimpleDateFormat("M-dd-yyyy hh:mm:ss");    
 
-		Date time = new java.util.Date();
-	
-		String timeString = (dateFormating.format(time)).toString();
-		
-		
-		movie.setDate(timeString);
+		movie.setDate(new Timestamp(System.currentTimeMillis()));
 		MovieRatingRepository.save(movie);
 		return "movie_confirm";
 	}
